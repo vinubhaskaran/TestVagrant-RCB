@@ -26,17 +26,26 @@ public class JsonRead {
 		JSONObject jsonObject = (JSONObject) obj;
 		String teamName = (String) jsonObject.get("name");
 		String location = (String) jsonObject.get("location");
+		System.out.println("TEAM-----" + teamName);
+		System.out.println("LOCATION-----" + location);
+		System.out.println("--------------------------------");
+
 		JSONArray players = (JSONArray) jsonObject.get("player");
 		plr = new String[players.size()];
 
 		for (int i = 0; i < players.size(); i++) {
 			JSONObject player = (JSONObject) players.get(i);
-			String name = (String) player.get("name");
-			String country = (String) player.get("country");
-			String role = (String) player.get("role");
-			String price = (String) player.get("price-in-crores");
+			String s1 = (String) player.get("name");
+			String s2 = (String) player.get("country");
+			String s3 = (String) player.get("role");
+			String s4 = (String) player.get("price-in-crores");
+			System.out.println("Player name :" + s1);
+			System.out.println("Country :" + s2);
+			System.out.println("Role :" + s3);
+			System.out.println("Crores :" + s4);
+			System.out.println();
 
-			plr[i] = name + "," + country + "," + role + "," + price;
+			plr[i] = s1 + "," + s2 + "," + s3 + "," + s4;
 		}
 	}
 }

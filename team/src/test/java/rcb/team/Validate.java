@@ -13,6 +13,7 @@ public class Validate extends JsonRead {
 			if (!data[1].equalsIgnoreCase("india"))
 				foreign++;
 		}
+		System.out.println("Number of foreign players :" + foreign);
 		Assert.assertEquals(foreign, 4);
 
 	}
@@ -25,6 +26,7 @@ public class Validate extends JsonRead {
 			if (data[2].contains("Wicket"))
 				wKeep++;
 		}
+		System.out.println("Number of Wicket Keepers :" + wKeep);
 		if (wKeep == 0)
 			Assert.fail();
 	}
