@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 public class Validate extends JsonRead {
 
-	@Test
+	@Test(priority = 0)
 	public static void foreignPlayers() {
 		int foreign = 0;
 		for (int i = 0; i < plr.length; i++) {
@@ -18,7 +18,7 @@ public class Validate extends JsonRead {
 
 	}
 
-	@Test
+	@Test(priority = 1)
 	public static void wicketKeeper() {
 		int wKeep = 0;
 		for (int i = 0; i < plr.length; i++) {
