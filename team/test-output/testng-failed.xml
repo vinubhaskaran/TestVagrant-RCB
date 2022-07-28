@@ -6,7 +6,7 @@
       <class name="rcb.team.Validate">
         <methods>
           <include name="foreignPlayers"/>
-          <include name="readfile"/>
+          <include name="wicketKeeper"/>
         </methods>
       </class> <!-- rcb.team.Validate -->
     </classes>

@@ -1,32 +1,41 @@
 package rcb.team;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class Validate extends JsonRead {
+import commonFunctions.ReusableFunctions;
 
-	@Test(priority = 0)
-	public static void foreignPlayers() {
-		int foreign = 0;
+public class Validate extends JsonRead {
+	private static Logger logger = LogManager.getLogger(ReusableFunctions.class);
+	int foreign, wKeep;
+	int[] a = new int[2];
+
+	void check() {
+		foreign = 0;
+		wKeep = 0;
 		for (int i = 0; i < plr.length; i++) {
 			String data[] = plr[i].split(",");
 			if (!data[1].equalsIgnoreCase("india"))
 				foreign++;
+			if (data[2].contains("Wicket"))
+				wKeep++;
 		}
-		System.out.println("Number of foreign players :" + foreign);
+	}
+
+	@Test(priority = 0)
+	void foreignPlayersCount() {
+		check();
+		logger.info("Number of foreign players :" + foreign);
 		Assert.assertEquals(foreign, 4);
 
 	}
 
 	@Test(priority = 1)
-	public static void wicketKeeper() {
-		int wKeep = 0;
-		for (int i = 0; i < plr.length; i++) {
-			String data[] = plr[i].split(",");
-			if (data[2].contains("Wicket"))
-				wKeep++;
-		}
-		System.out.println("Number of Wicket Keepers :" + wKeep);
+	void wicketKeeperCount() {
+		check();
+		logger.info("Number of Wicket Keepers :" + wKeep);
 		if (wKeep == 0)
 			Assert.fail();
 	}
